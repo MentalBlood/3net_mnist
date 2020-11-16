@@ -7,7 +7,7 @@
     }, 
     {
       "op": "null", 
-      "name": "hybridsequential29_conv0_weight", 
+      "name": "hybridsequential11_conv0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
@@ -19,7 +19,7 @@
     }, 
     {
       "op": "null", 
-      "name": "hybridsequential29_conv0_bias", 
+      "name": "hybridsequential11_conv0_bias", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -32,7 +32,7 @@
     }, 
     {
       "op": "Convolution", 
-      "name": "hybridsequential29_conv0_fwd", 
+      "name": "hybridsequential11_conv0_fwd", 
       "attrs": {
         "dilate": "(1, 1)", 
         "kernel": "(4, 4)", 
@@ -47,13 +47,13 @@
     }, 
     {
       "op": "Activation", 
-      "name": "hybridsequential29_conv0_tanh_fwd", 
+      "name": "hybridsequential11_conv0_tanh_fwd", 
       "attrs": {"act_type": "tanh"}, 
       "inputs": [[3, 0, 0]]
     }, 
     {
       "op": "Pooling", 
-      "name": "hybridsequential29_pool0_fwd", 
+      "name": "hybridsequential11_pool0_fwd", 
       "attrs": {
         "global_pool": "False", 
         "kernel": "(2, 2)", 
@@ -67,11 +67,11 @@
     }, 
     {
       "op": "null", 
-      "name": "hybridsequential29_dense0_weight", 
+      "name": "hybridsequential11_dense0_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(16, 0)", 
+        "__shape__": "(32, 0)", 
         "__storage_type__": "0", 
         "__wd_mult__": "1.0"
       }, 
@@ -79,12 +79,12 @@
     }, 
     {
       "op": "null", 
-      "name": "hybridsequential29_dense0_bias", 
+      "name": "hybridsequential11_dense0_bias", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
         "__lr_mult__": "1.0", 
-        "__shape__": "(16,)", 
+        "__shape__": "(32,)", 
         "__storage_type__": "0", 
         "__wd_mult__": "1.0"
       }, 
@@ -92,23 +92,23 @@
     }, 
     {
       "op": "FullyConnected", 
-      "name": "hybridsequential29_dense0_fwd", 
+      "name": "hybridsequential11_dense0_fwd", 
       "attrs": {
         "flatten": "True", 
         "no_bias": "False", 
-        "num_hidden": "16"
+        "num_hidden": "32"
       }, 
       "inputs": [[5, 0, 0], [6, 0, 0], [7, 0, 0]]
     }, 
     {
       "op": "Activation", 
-      "name": "hybridsequential29_dense0_tanh_fwd", 
+      "name": "hybridsequential11_dense0_tanh_fwd", 
       "attrs": {"act_type": "tanh"}, 
       "inputs": [[8, 0, 0]]
     }, 
     {
       "op": "null", 
-      "name": "hybridsequential29_dense1_weight", 
+      "name": "hybridsequential11_dense1_weight", 
       "attrs": {
         "__dtype__": "0", 
         "__lr_mult__": "1.0", 
@@ -120,7 +120,7 @@
     }, 
     {
       "op": "null", 
-      "name": "hybridsequential29_dense1_bias", 
+      "name": "hybridsequential11_dense1_bias", 
       "attrs": {
         "__dtype__": "0", 
         "__init__": "zeros", 
@@ -133,7 +133,7 @@
     }, 
     {
       "op": "FullyConnected", 
-      "name": "hybridsequential29_dense1_fwd", 
+      "name": "hybridsequential11_dense1_fwd", 
       "attrs": {
         "flatten": "True", 
         "no_bias": "False", 
@@ -143,7 +143,7 @@
     }, 
     {
       "op": "Activation", 
-      "name": "hybridsequential29_dense1_tanh_fwd", 
+      "name": "hybridsequential11_dense1_tanh_fwd", 
       "attrs": {"act_type": "tanh"}, 
       "inputs": [[12, 0, 0]]
     }

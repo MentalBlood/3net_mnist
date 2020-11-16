@@ -9,7 +9,8 @@ parser.add_argument('--dataset', type=str, nargs='?',
 					default='MNIST',
                     help='dataset model should be trained on')
 parser.add_argument('--images', metavar='image', type=str, nargs='+',
-                    help='paths to files to send in request')
+                    help='paths to files to send in request',
+                    default=['mnist_png\\testing\\2\\1.png', 'fashion-mnist_png\\test\\1\\2.png'])
 args = parser.parse_args()
 
 imgPaths = args.images
@@ -24,7 +25,7 @@ img = list(map(readImage, imgPaths))
 requestJson = {'images': img, 'dataset': netName}
 print('request json:', json.dumps(requestJson))
 
-testUrl = 'http://localhost:5000/classify'
+testUrl = 'http://localhost:5000/v2/classify'
 headers = {'content-type': 'application/json'}
 response = requests.post(testUrl, json=requestJson, headers=headers)
 print('response json:', json.loads(response.text))

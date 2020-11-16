@@ -1,8 +1,9 @@
-import os, sys
+import os
 import json
 from mxnet.gluon import nn
 
-def loadNets(path = './nets/'):
+def loadNets(path = './net/'):
+	print('loadNets')
 	nets = {}
 
 	models_dirs = os.listdir(path)
@@ -14,7 +15,7 @@ def loadNets(path = './nets/'):
 			params_file_path = model_dir_path + 'params.params'
 			labels_file_path = model_dir_path + 'labels.json'
 			model_name = model_dir
-			print(model_name)
+			#print(model_name)
 			with open(labels_file_path) as labels_file:
 				nets[model_name] = {
 					'net': nn.SymbolBlock.imports(arch_file_path, ['data'], params_file_path),
@@ -22,3 +23,5 @@ def loadNets(path = './nets/'):
 				}
 
 	return nets
+
+nets = loadNets()
