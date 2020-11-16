@@ -1,8 +1,12 @@
+from flask import request
+from flask_restful import Resource
+from loadNets import nets
+from dataPreprocessing import prepareData, prepareImage
+from processThroughNet import *
+
 def routedTo(urls, endpoint):
-	def initFunc(self):
-		self.urls = urls
-		self.endpoint = endpoint
 	def decorator(someClass):
-		someClass.__init__ = initFunc
+		someClass.urls = urls
+		someClass.endpoint = endpoint
 		return someClass
 	return decorator

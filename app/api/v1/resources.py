@@ -1,9 +1,4 @@
-from ..common import routedTo
-from flask import request
-from flask_restful import Resource
-from loadNets import nets
-from dataPreprocessing import prepareData, prepareImage
-from processThroughNet import processThroughNet
+from ..common import *
 
 @routedTo(['/classify'], 'classify')
 class Classify(Resource):
@@ -16,4 +11,9 @@ class Classify(Resource):
 		data = request.get_json()['images']
 		labels = nets[netName]['labels']
 		preparedData = prepareData(data)
-		return processThroughNet(net, preparedData, labels)
+		predictions = processThroughNet(net, preparedData, labels)
+		predictions = [{
+			'class': p[0],
+			'label': p[1]
+		} for p in predictions]
+		return {'predictions': predictions}

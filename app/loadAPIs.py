@@ -22,13 +22,10 @@ def loadAPIs(app):
 		api_dir_path = './api/' + api_dir + '/'
 		if os.path.isdir(api_dir_path):
 			api_prefix = '/' + api_dir
-			print(api_prefix)
 			api = Api(app, prefix=api_prefix)
 			resources = getClasses(['api', api_dir, 'resources'])
 			for r in resources:
-				print(r)
-				temp = r()
-				api.add_resource(r, *temp.urls, endpoint = api_prefix + '/' + temp.endpoint)
+				api.add_resource(r, *r.urls, endpoint = api_prefix + '/' + r.endpoint)
 			APIs[api_dir] = api
 
 	return APIs
