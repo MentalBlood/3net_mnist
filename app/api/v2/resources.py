@@ -23,8 +23,7 @@ class Classify(Resource):
 			images_indexes_by_suitable_nets_names = {}
 			net_name_by_answer_label = {
 				'MNIST': 'MNIST',
-				'Fashion MNIST': 'FashionMNIST',
-				'distributor': 'distributor'
+				'Fashion MNIST': 'FashionMNIST'
 			}
 			for d in range(len(suitable_nets)):
 				answer_label = suitable_nets[d][1]
