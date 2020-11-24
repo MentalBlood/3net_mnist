@@ -4,7 +4,7 @@ from ..common import *
 class Classify(Resource):
 	def post(self):
 		request_json = request.get_json()
-		if request_json['dataset'] != None:
+		if 'dataset' in request_json:
 			available_nets = ['MNIST', 'FashionMNIST', 'distributor']
 			net_name = request.get_json()['dataset']
 			if not (net_name in available_nets):
@@ -29,9 +29,10 @@ class Classify(Resource):
 				answer_label = suitable_nets[d][1]
 				net_name = net_name_by_answer_label[answer_label]
 				if not (net_name in images_indexes_by_suitable_nets_names):
-					images_indexes_by_suitable_nets_names[net_name] = {}
-					images_indexes_by_suitable_nets_names[net_name]['distributor_answer'] = answer_label
-					images_indexes_by_suitable_nets_names[net_name]['images_indexes'] = []
+					images_indexes_by_suitable_nets_names[net_name] = {
+						'distributor_answer': answer_label,
+						'images_indexes': []
+					}
 				images_indexes_by_suitable_nets_names[net_name]['images_indexes'].append(d)
 			
 			answersDict = {}
@@ -53,4 +54,4 @@ class Classify(Resource):
 
 			answersList = [answersDict[i] for i in sorted(answersDict.keys())]
 			
-			return answersList
+			return {'predictions': answersList}

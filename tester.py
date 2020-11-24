@@ -28,10 +28,13 @@ def readImage(path):
 		result = base64.encodebytes(imageBytes).decode("utf-8")
 	return result
 img = list(map(readImage, imgPaths))
-requestJson = {'images': img, 'dataset': netName}
+if netName:
+	requestJson = {'images': img, 'dataset': netName}
+else:
+	requestJson = {'images': img}
 print('request json:', json.dumps(requestJson))
 
-testUrl = 'http://localhost:5000/v2/classify'
+testUrl = 'http://localhost:8080/v2/classify'
 headers = {'content-type': 'application/json'}
 response = requests.post(testUrl, json=requestJson, headers=headers)
 print('response json:', response.text)
